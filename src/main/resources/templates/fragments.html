@@ -4,17 +4,15 @@
     <meta charset="UTF-8"/>
     <title>Coding Events</title>
 
-<!--    to use these links, you must define as a fragment ^ above head here-->
-<!--    how you can link up files that live in resources>static folder-->
-    <script th:src="@{/script.js}"></script>
-    <link th:href="@{/styles.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
 
 </head>
 <body>
     <nav th:fragment="navigation">
-        <ul>
-            <li><a href="/events">All Events</a></li>
-            <li><a href="/events/create">Create Event</a></li>
+        <ul class="nav">
+            <li class="nav-item"><a class="nav-link" href="/events">All Events</a></li>
+            <li class="nav-item"><a class="nav-link" href="/events/create">Create Event</a></li>
         </ul>
     </nav>
 
