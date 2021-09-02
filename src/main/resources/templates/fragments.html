@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
+<head th:fragment="head">
     <meta charset="UTF-8"/>
-    <title></title>
+    <title>Coding Events</title>
+
+<!--    to use these links, you must define as a fragment ^ above head here-->
+<!--    how you can link up files that live in resources>static folder-->
+    <script th:src="@{/script.js}"></script>
+    <link th:href="@{/styles.css}" rel="stylesheet">
+
 </head>
 <body>
     <nav th:fragment="navigation">
