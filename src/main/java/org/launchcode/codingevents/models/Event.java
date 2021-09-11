@@ -2,10 +2,12 @@ package org.launchcode.codingevents.models;
 
 import java.util.Objects;
 
+
 public class Event {
 
     private int id;
     private static int nextId = 1; //static counter, belongs to the class
+
 
     private String name;
     private String description;
