@@ -12,27 +12,31 @@ public class Event {
     private int id;
     private static int nextId = 1; //static counter, belongs to the class
 
-    @NotBlank
+    @NotBlank(message="Name is required")
     @Size(min=3, max=50, message="Name must be between 3 and 50 characters")
     private String name;
 
     @Size(max=500, message="Description too long")
     private String description;
 
-    @NotBlank
+    @NotBlank(message="Email address required")
     @Email(message="Invalid Email Address. Please try again!")
     private String contactEmail;
 
 
     public Event(String name, String description, String contactEmail) {
+        this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
+    }
+
+//no arg constructor, required to use th:field in create.html
+    public Event() {
         this.id = nextId;
         nextId++;
         //setting id to 1 and then incrementing allows each id to be unique by +1
     }
-
 
     public String getName() {
         return name;
