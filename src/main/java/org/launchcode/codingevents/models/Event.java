@@ -1,6 +1,10 @@
 package org.launchcode.codingevents.models;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Objects;
+
 
 
 public class Event {
@@ -8,14 +12,21 @@ public class Event {
     private int id;
     private static int nextId = 1; //static counter, belongs to the class
 
-
+    @NotBlank
+    @Size(min=3, max=50, message="Name must be between 3 and 50 characters")
     private String name;
+
+    @Size(max=500, message="Description too long")
     private String description;
 
+    @Email(message="Invalid Email Address. Please try again!")
+    private String contactEmail;
 
-    public Event(String name, String description) {
+
+    public Event(String name, String description, String contactEmail) {
         this.name = name;
         this.description = description;
+        this.contactEmail = contactEmail;
         this.id = nextId;
         nextId++;
         //setting id to 1 and then incrementing allows each id to be unique by +1
@@ -41,6 +52,14 @@ public class Event {
         this.description = description;
     }
 
+
+    public String getContactEmail() {
+        return contactEmail;
+    }
+
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
+    }
 
     public int getId() {
         return id;
