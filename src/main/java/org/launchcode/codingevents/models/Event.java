@@ -1,16 +1,20 @@
 package org.launchcode.codingevents.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
 
-
+@Entity
 public class Event {
 
+    @Id
+    @GeneratedValue
     private int id;
-    private static int nextId = 1; //static counter, belongs to the class
 
     @NotBlank(message="Name is required")
     @Size(min=3, max=50, message="Name must be between 3 and 50 characters")
@@ -27,19 +31,17 @@ public class Event {
     private EventType type;
 
     public Event(String name, String description, String contactEmail, EventType type) {
-        this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
         this.type = type;
     }
 
-//no arg constructor, required to use th:field in create.html
+//no arg constructor, required for ORM for an entity class
     public Event() {
-        this.id = nextId;
-        nextId++;
-        //setting id to 1 and then incrementing allows each id to be unique by +1
     }
+
+
 
     public String getName() {
         return name;
