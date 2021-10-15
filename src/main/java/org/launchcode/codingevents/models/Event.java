@@ -3,8 +3,10 @@ package org.launchcode.codingevents.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
@@ -24,14 +26,16 @@ public class Event extends AbstractEntity {
     @Email(message="Invalid Email Address. Please try again!")
     private String contactEmail;
 
+    @ManyToOne
+    @NotNull(message = "Category is required")
+    private EventCategory eventCategory;
 
-    private EventType type;
-
-    public Event(String name, String description, String contactEmail, EventType type) {
+    public Event(String name, String description, String contactEmail,
+                 EventCategory eventCategory) {
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
-        this.type = type;
+        this.eventCategory = eventCategory;
     }
 
 //no arg constructor, required for ORM for an entity class
@@ -68,15 +72,15 @@ public class Event extends AbstractEntity {
         this.contactEmail = contactEmail;
     }
 
-    public EventType getType() {
-        return type;
+    public EventCategory getEventCategory() {
+        return eventCategory;
     }
 
-    public void setType(EventType type) {
-        this.type = type;
+    public void setEventCategory(EventCategory eventCategory) {
+        this.eventCategory = eventCategory;
     }
 
-    //don't create setter, we don't want anyone to be able to set id
+//don't create setter, we don't want anyone to be able to set id
 
 
     @Override
