@@ -93,7 +93,7 @@ public class EventController {
             }
         }
         return "redirect:";
-
+    }
 
         @GetMapping("detail")
         public String displayEventDetails(@RequestParam Integer eventId, Model model) {
@@ -136,4 +136,4 @@ public class EventController {
 //
 
 
-}
+

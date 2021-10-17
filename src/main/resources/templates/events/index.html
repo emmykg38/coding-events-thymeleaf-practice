@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container">
@@ -7,13 +8,12 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        <th>Tag Name</th>
+        <th>Event Name</th>
     </tr>
     </thead>
-    <tr th:each="tag : ${tags}">
-        <td th:text="${tag.displayName}"></td>
+    <tr th:each="event : ${events}">
+        <td><a th:href="'/events/detail?eventId=' + ${event.id}" th:text="${event.name}"></a></td>
     </tr>
-
 </table>
 
 </body>

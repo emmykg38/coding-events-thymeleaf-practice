@@ -28,7 +28,7 @@ public class TagController {
         return "tags/index";
     }
 
-    @PostMapping("create")
+    @GetMapping("create")
     public String displayCreateTagForm(Model model) {
         model.addAttribute("title", "Create Tag");
         model.addAttribute(new Tag());
